@@ -482,7 +482,8 @@ body{
   font-size: 1.4rem;
   font-weight: 300;
   color: var(--color-text);
-  width: 60%;
+  text-align: center;
+  line-height: 2.5rem;
 }
 .logo-about {
   display: flex;
