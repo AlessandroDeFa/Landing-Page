@@ -24,6 +24,17 @@ hamburger.addEventListener('click', ()=>{
   hamburger.classList.toggle('navbar-open');
 });
 
+// Navbar close on click
+
+const links = document.querySelectorAll('#linknav');
+
+links.forEach(item => {
+  item.addEventListener('click', event => {
+    navbar.classList.remove('navbar-open');
+    hamburger.classList.remove('navbar-open');
+  })
+});
+
 // Animation Gsap on Scroll 
 const lineartist = CSSRulePlugin.getRule('.artist::before');
 const tlArtists = gsap.timeline({

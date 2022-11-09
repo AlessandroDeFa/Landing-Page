@@ -17,6 +17,9 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+html:has(.navbar-open) .contact-button {
+  pointer-events: none;
+}
 body{
   background-color: var(--color-bg2);
   font-family: 'Dosis', sans-serif;
@@ -31,21 +34,41 @@ body{
   height: 100vh;
   width: 100%;
   background-color: black;
-  color: white;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   z-index: 100;
+}
+.container-loader {
+  opacity: 0;
+}
+.loader-circle {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  z-index: 101;
+}
 
+.loader-circle::before {
+  position: absolute;
+  content:'';
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-top: 1px solid rgba(255,255,255,.5);
+  animation: rotate 1s linear infinite;
 }
-.overlay-first img {
-  width: 70px;
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-#text-reveal {
-  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-  transform: translateY(9rem);
-  font-size: 4rem;
-  font-weight: 300;
-  text-transform: uppercase;
-}
+
 .overlay-second {
   position: fixed;
   top: 0;
@@ -91,6 +114,7 @@ body{
   padding: 0.55rem 1.6rem;
   background-color: white;
   border-radius: 2rem;
+  border: 0;
   color: var(--color-bg);
   text-decoration: none;
   font-weight: 500;
@@ -114,7 +138,7 @@ body{
 }
 .hamburger-menu span {
   display: block;
-  background-color: var(--color-text);
+  background-color: hsl(300,1%,82%);
   width: 14px;
   height: 2px;
   transition: all 400ms ease;
@@ -182,7 +206,7 @@ body{
   font-weight: 400;
 }
 .nav-list li a:hover {
-  color: var(--color-text);
+  color: hsl(300,1%,82%);
   transition: color 500ms ease;
 }
 /* MAIN SECTION */
@@ -195,7 +219,7 @@ body{
   background-position: center;
 }
 .main-text {
-  color: var(--color-text);
+  color: hsl(300,1%,82%);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -222,6 +246,7 @@ body{
   border-radius: 2rem;
   color: var(--color-bg);
   text-decoration: none;
+  border: 0;
   font-weight: 500;
   font-size: 1rem;
   transition: all 500ms ease;
@@ -370,7 +395,7 @@ body{
 }
 .piercing-title {
   font-size: 4rem;
-  margin: 3rem 0;
+  margin: 0 0 3rem 0;
   position: relative;
 }
 .piercing-title::before{
@@ -438,13 +463,14 @@ body{
   bottom: -0.5rem;
 }
 .piercing-price-text p:not(:last-child) {
-margin-bottom: 1rem;
+margin-bottom: 2rem;
 }
 .piercing-price-text p span{
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 
 /* SECTION FOOTER */
 footer {
