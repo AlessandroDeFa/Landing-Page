@@ -110,46 +110,32 @@ const  reviews = [
 ]
 
 const slides = document.querySelectorAll('.slide');
-const textreview = document.querySelector('#text-review');
-const author = document.querySelector('#author');
 const nextbutton = document.querySelector('.nextbutton');
 const prevbutton = document.querySelector('.prevbutton');
 
-// Set Starting item 
-
-var currentItem = 0;
-
-// load initial item 
-
-window.addEventListener('DOMContentLoaded', function(){
-  const item = reviews[currentItem];
-  author.textContent = item.name;
-  textreview.textContent = item.text;
+slides.forEach(function(slide, index){
+  slide.style.left = `${index * 100}%`;
 });
 
-// show persone based on item 
+var counter = 0;
+nextbutton.addEventListener('click', function(){
+  counter++;
+  carousel();
+});
 
-function showPerson(person){
-  const item = reviews[person];
-  author.textContent = item.name;
-  textreview.textContent = item.text;
-}
+prevbutton.addEventListener('click', function() {
+  counter--;
+  carousel();
+});
 
-//show next person
-
-nextbutton.addEventListener("click", function () {
-  currentItem++;
-  if (currentItem > reviews.length - 1) {
-    currentItem = 0;
+function carousel(){
+  if(counter === slides.length) {
+    counter = 0;
   }
-  showPerson(currentItem);
-});
-
-// show prev person
-prevbutton.addEventListener("click", function () {
-  currentItem--;
-  if (currentItem < 0) {
-    currentItem = reviews.length - 1;
+  if(counter < 0){
+    counter = slides.length - 1;
   }
-  showPerson(currentItem);
-});
+  slides.forEach(function(slide){
+    slide.style.transform = `translateX(-${counter * 100}%)`;
+  });
+};
