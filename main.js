@@ -81,34 +81,6 @@ tlcontact.from('.title-contact', {y:100, opacity: 0, duration:1})
 
 // Animation slide reviews
 
-const  reviews = [ 
-  {
-    id: 1,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, dolorem. Lorem ipsum dolor sit ametLorem ipsum dolor sit amet consectetur adipisicing elit.",
-    name: "- JACOB",
-  },
-  {
-    id: 2,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, dolorem..",
-    name: "- DANIEL",
-  },
-  {
-    id: 3,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, dolorem. Lorem ipsum dolor sit ametLorem ipsum dolor sit amet consectetur ",
-    name: "- TYNA",
-  },
-  {
-    id: 4,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, dolorem.",
-    name: "- GISELLE",
-  },
-  {
-    id: 5,
-    text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, dolorem. Lorem ipsum dolor sit ametLorem ipsum dolor sit amet consectetur ametLorem ipsum dolor sit amet consectetur  ",
-    name: "- MARY",
-  }
-]
-
 const slides = document.querySelectorAll('.slide');
 const nextbutton = document.querySelector('.nextbutton');
 const prevbutton = document.querySelector('.prevbutton');
