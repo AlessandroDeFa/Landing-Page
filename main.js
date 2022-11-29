@@ -81,6 +81,23 @@ tlcontact.from('.title-contact', {y:100, opacity: 0, duration:1})
 
 // Animation slide reviews
 
+const tlrev = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.section-reviews',
+    start: "center bottom"
+  }
+})
+
+tlrev.from('.svg-reviews', {duration:1, opacity: 0})
+.from('.title-reviews', {duration:1, opacity:0}, "-=1")
+.from('.text-reviews', {duration:1, opacity:0}, "-=1")
+.from('.name-reviews', {duration:1, opacity:0}, "-=3")
+.from('.container-prevbutton',{duration:0.5, opacity:0, x:100}, "-=.5")
+.from('.container-nextbutton',{duration:0.5, opacity:0, x:-100}, "-=.5")
+
+
+//slide reviews
+
 const slides = document.querySelectorAll('.slide');
 const nextbutton = document.querySelector('.nextbutton');
 const prevbutton = document.querySelector('.prevbutton');
