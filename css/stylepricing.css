@@ -1,29 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600&display=swap');
 
 :root {
-  --color-bg: hsl(0,0%,8%);
-  --color-bg2: hsl(0,0%,13%);
-  --color-text: hsl(0,0%,48%);
-  --color-navbar: rgba(0,0,0,0.5);
+  --color-bg: hsl(0, 0%, 8%);
+  --color-bg2: hsl(0, 0%, 13%);
+  --color-text: hsl(0, 0%, 48%);
+  --color-navbar: rgba(0, 0, 0, 0.5);
   --color-nav-links: rgba(255, 255, 255, 0.5);
-  --color-bg-price: hsl(0,0%,95%);
+  --color-bg-price: hsl(0, 0%, 95%);
 }
-*{
+
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
+
 html:has(.navbar-open) .contact-button {
   pointer-events: none;
 }
-body{
+
+body {
   background-color: var(--color-bg2);
   font-family: 'Dosis', sans-serif;
 }
+
 /* OVERLAY ANIMATION */
 .overlay-first {
   display: grid;
@@ -37,9 +42,11 @@ body{
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   z-index: 100;
 }
+
 .container-loader {
   opacity: 0;
 }
+
 .loader-circle {
   position: relative;
   width: 80px;
@@ -51,19 +58,21 @@ body{
 
 .loader-circle::before {
   position: absolute;
-  content:'';
+  content: '';
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  border-top: 1px solid rgba(255,255,255,.5);
+  border-top: 1px solid rgba(255, 255, 255, .5);
   animation: rotate 1s linear infinite;
 }
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
@@ -79,6 +88,7 @@ body{
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   z-index: 100;
 }
+
 /* HEADER */
 .container-navbar {
   position: fixed;
@@ -89,6 +99,7 @@ body{
   backdrop-filter: blur(8px);
   z-index: 3;
 }
+
 .primary-navbar {
   position: relative;
   display: grid;
@@ -97,6 +108,7 @@ body{
   margin: 0 auto;
   padding: 1rem 0 1rem 0;
 }
+
 .linenav {
   position: absolute;
   width: 100%;
@@ -105,17 +117,21 @@ body{
   bottom: 0;
   transform: scaleX(0);
 }
-.header-logo{
+
+.header-logo {
   display: grid;
   place-items: center;
 }
+
 .logo {
   width: 55px;
 }
-.container-contact-button{
+
+.container-contact-button {
   display: grid;
   place-items: center right;
 }
+
 .contact-button {
   padding: 0.55rem 1.6rem;
   background-color: white;
@@ -128,15 +144,18 @@ body{
   text-transform: uppercase;
   transition: all 500ms ease;
 }
+
 .contact-button:hover {
-  background-color:rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.8);
   transition: all 500ms ease;
 }
+
 /* HAMBURGER MENU */
 .container-hamburger {
   display: grid;
   place-items: center left;
 }
+
 .hamburger-menu {
   display: flex;
   flex-direction: column;
@@ -146,33 +165,40 @@ body{
   height: 40px;
   cursor: pointer;
 }
+
 .hamburger-menu span {
   display: block;
-  background-color: hsl(300,1%,82%);
+  background-color: hsl(300, 1%, 82%);
   width: 14px;
   height: 2px;
   transition: all 400ms ease;
 }
+
 .hamburger-menu span:first-child {
   margin-bottom: 5px;
 }
+
 .hamburger-menu span:nth-child(2) {
   margin-bottom: 5px;
   width: 24px;
 }
-.navbar-open span:nth-child(2){
+
+.navbar-open span:nth-child(2) {
   transform: scale(0);
 }
-.navbar-open span:first-child{
+
+.navbar-open span:first-child {
   transform: translateY(6px) rotate(45deg);
   width: 20px;
   transition-delay: 300ms;
 }
-.navbar-open span:last-child{
+
+.navbar-open span:last-child {
   transform: translateY(-8px) rotate(-45deg);
   width: 20px;
   transition-delay: 300ms;
 }
+
 /* NAV BAR */
 .nav-links {
   position: fixed;
@@ -180,34 +206,43 @@ body{
   justify-content: flex-end;
   align-items: center;
   height: 100vh;
-  width: 0;
+  width: 1px;
+  left: -1px;
   background-color: var(--color-navbar);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 1;
-  transition: all 1s cubic-bezier(.49,.51,.08,1.04) 0.5s;
+  transition: all 1s cubic-bezier(.49, .51, .08, 1.04) 0.5s;
 }
+
 .navbar-open:not(.hamburger-menu) {
-  width: 70vh;
-  transition: all 1s cubic-bezier(.2,.91,.58,.97);
+  width: 40vw;
+  left: 0;
+  transition: all 1s cubic-bezier(.2, .91, .58, .97);
 }
+
 .nav-list {
   transform: translateX(-100%);
   opacity: 0;
   list-style: none;
   transition: all 700ms ease-in-out;
 }
+
 .navbar-open .nav-list {
   transform: translateX(0);
   opacity: 1;
   transition: all 700ms ease-out 0.4s;
 }
+
 .nav-links li {
   padding-right: calc(1rem + 6vw);
 }
+
 .nav-links li:not(:last-child) {
   margin-bottom: 2rem;
   text-align: end;
 }
+
 .nav-list li a {
   text-decoration: none;
   color: var(--color-nav-links);
@@ -215,39 +250,47 @@ body{
   font-size: 1.3rem;
   font-weight: 400;
 }
+
 .nav-list li a:hover {
-  color: hsl(300,1%,82%);
+  color: hsl(300, 1%, 82%);
   transition: color 500ms ease;
 }
+
 /* MAIN SECTION */
 .container-main {
   height: 100vh;
   width: 100%;
-  background-image: url(images/backgroundpricing.jpg);
+  background-image: url(../images/backgroundpricing.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
 }
+
 .main-text {
-  color: hsl(300,1%,82%);
+  color: hsl(300, 1%, 82%);
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
 }
+
 .main-text h1 {
-  font-size: 4rem;
+  font-size: clamp(1.6rem, 4vw + .5rem, 4rem);
   font-weight: 400;
+  margin-bottom: .5rem;
 }
+
 .main-text p {
-  font-size: 2rem;
+  white-space: nowrap;
+  font-size: clamp(1rem, 4vw, 2rem);
   font-weight: 400;
 }
+
 .main-button {
   position: relative;
   margin-top: 1rem;
@@ -261,21 +304,25 @@ body{
   font-size: 1rem;
   transition: all 500ms ease;
 }
+
 .icon-button {
   position: absolute;
   transform: translate(-100%, 15%);
   opacity: 0;
   transition: all 500ms ease;
 }
+
 .main-button:hover {
   transition: all 500ms ease;
   background-color: rgba(255, 255, 255, 0.8);
 }
+
 .main-button:hover .icon-button {
   transform: translate(50%, 15%);
   opacity: 1;
   transition: all 500ms ease;
 }
+
 .animation-line {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.5);
@@ -287,6 +334,7 @@ body{
   overflow: hidden;
   opacity: 0;
 }
+
 .animation-line::before {
   content: '';
   position: absolute;
@@ -294,13 +342,15 @@ body{
   height: 3rem;
   background-color: white;
   animation: animation-line 1.5s linear infinite;
-  
+
 }
+
 @keyframes animation-line {
-  0%{
+  0% {
     transform: translateY(-300%);
   }
-  100%{
+
+  100% {
     transform: translateY(300%);
   }
 }
@@ -314,9 +364,11 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 .container-price {
- width: 100%;
+  width: 100%;
 }
+
 .container-price-tatto {
   display: flex;
   justify-content: center;
@@ -326,53 +378,62 @@ body{
   margin: 0 auto;
   padding-bottom: 7rem;
 }
+
 .tattoo-title {
-  font-size: 4rem;
+  font-size: clamp(3rem, 4vw + .5rem, 4rem);
   margin: 5rem 0 3rem 0;
   position: relative;
 }
-.tattoo-title::before{
+
+.tattoo-title::before {
   content: '';
   position: absolute;
-  background-color: hsl(0,0%,82%);
+  background-color: hsl(0, 0%, 82%);
   width: 60%;
   height: 2px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .tattoo-text {
   text-align: center;
   color: var(--color-text);
   font-size: 1.1rem;
   margin-bottom: 5rem;
 }
+
 .tattoo-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0 1rem;
 }
+
 .tattoo-price-title {
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 4vw + .5rem, 2rem);
   margin-bottom: 2rem;
   position: relative;
 }
+
 .tattoo-price-title::before {
   content: '';
   position: absolute;
-  background-color: hsl(0,0%,82%);
+  background-color: hsl(0, 0%, 82%);
   height: 2px;
   width: 100%;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .tattoo-price-text p {
   color: var(--color-text);
   text-align: center;
   margin-bottom: 0.5rem;
 }
+
 .tattoo-price-text span {
   font-size: 2rem;
   font-weight: 500;
@@ -380,13 +441,15 @@ body{
   align-items: center;
   justify-content: center;
 }
+
 .tattoo-color {
   text-align: center;
+  width: 182px;
 }
 
 .separator {
   width: 75%;
-  background-color:hsl(0,0%,82%);
+  background-color: hsl(0, 0%, 82%);
   height: 1px;
   position: absolute;
   left: 50%;
@@ -403,79 +466,95 @@ body{
   margin: 0 auto;
   padding-top: 7rem;
 }
+
 .piercing-title {
-  font-size: 4rem;
+  font-size: clamp(3rem, 4vw + .5rem, 4rem);
   margin: 0 0 3rem 0;
   position: relative;
 }
-.piercing-title::before{
+
+.piercing-title::before {
   content: '';
   position: absolute;
-  background-color: hsl(0,0%,82%);
+  background-color: hsl(0, 0%, 82%);
   width: 60%;
   height: 2px;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .piercing-text {
   text-align: center;
   color: var(--color-text);
   font-size: 1.1rem;
   margin-bottom: 5rem;
 }
+
 .piercing-price {
   width: 100%;
   display: flex;
   justify-content: space-between;
   margin-bottom: 5rem;
 }
+
 .piercing-price-title {
   font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
   margin-bottom: 2rem;
   position: relative;
 }
+
 .piercing-price-title::before {
   content: '';
   position: absolute;
-  background-color: hsl(0,0%,82%);
+  background-color: hsl(0, 0%, 82%);
   height: 2px;
   width: 100%;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .piercing-ear {
   text-align: center;
 }
+
 .piercing-facial {
   text-align: center;
 }
+
 .piercing-body {
   text-align: center;
 }
+
 .piercing-price-text {
   font-size: 1.1rem;
+  font-size: clamp(.9rem, 2vw, 1.1rem);
   color: var(--color-text);
 }
+
 .piercing-price-text p {
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
 }
+
 .piercing-price-text p::before {
   content: '';
-  background-color: hsl(0,0%,82%);
+  background-color: hsl(0, 0%, 82%);
   position: absolute;
   height: 1px;
   width: 100%;
   bottom: -0.5rem;
 }
+
 .piercing-price-text p:not(:last-child) {
-margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
-.piercing-price-text p span{
+
+.piercing-price-text p span {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -491,28 +570,33 @@ footer {
   align-items: center;
   background-color: var(--color-bg);
 }
+
 .container-footer {
   padding: 2rem 0;
 }
+
 .logo-footer {
   width: 65px;
 }
+
 .container-links-footer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5rem;
+  gap: clamp(1rem, 2vw, 5rem);
   padding: 1rem 0;
-  border-bottom: 1px solid hsl(0,0%,23%);
-  border-top: 1px solid hsl(0,0%,23%);
+  border-bottom: 1px solid hsl(0, 0%, 23%);
+  border-top: 1px solid hsl(0, 0%, 23%);
 }
+
 .container-logo {
   display: flex;
   justify-content: center;
   align-items: center;
   padding-bottom: 2rem;
 }
+
 .list-footer {
   list-style: none;
   font-size: 1.1rem;
@@ -520,33 +604,66 @@ footer {
   width: 154px;
   text-align: center;
 }
+
+.list-footer:first-child li {
+  text-align: start;
+}
+
 .list-footer li:first-child {
   margin-bottom: 1.2rem;
 }
+
 .list-footer a {
   text-decoration: none;
-  color: hsl(300,1%,82%);
+  color: hsl(300, 1%, 82%);
   transition: all 500ms ease;
 }
+
 .list-footer a:hover {
   color: var(--color-nav-links);
   transition: all 500ms ease;
 }
-.social-footer span:not(:first-child) {
-  margin-left: 1rem;
+
+.social-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
+
 .social-footer svg {
   color: var(--color-nav-links);
   transition: all 500ms ease;
   cursor: pointer;
 }
+
 .social-footer svg:hover {
-  color: hsl(300,1%,82%);
+  color: hsl(300, 1%, 82%);
   transition: all 500ms ease;
 }
+
 .copyright {
   padding-top: 2rem;
   text-align: center;
-  color: hsl(300,1%,82%);
+  color: hsl(300, 1%, 82%);
   font-weight: 300;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .navbar-open:not(.hamburger-menu) {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  /* SECTION FOOTER */
+
+  .list-footer:first-child li {
+    text-align: center;
+  }
+
+  .container-links-footer {
+    padding: 1rem;
+  }
 }
