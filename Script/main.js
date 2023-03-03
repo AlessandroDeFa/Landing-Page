@@ -1,3 +1,36 @@
+//slide reviews
+
+const slides = document.querySelectorAll(".slide");
+const nextbutton = document.querySelector(".nextbutton");
+const prevbutton = document.querySelector(".prevbutton");
+
+slides.forEach(function (slide, index) {
+  slide.style.left = `${index * 100}%`;
+});
+
+var counter = 0;
+nextbutton.addEventListener("click", function () {
+  counter++;
+  carousel();
+});
+
+prevbutton.addEventListener("click", function () {
+  counter--;
+  carousel();
+});
+
+function carousel() {
+  if (counter === slides.length) {
+    counter = 0;
+  }
+  if (counter < 0) {
+    counter = slides.length - 1;
+  }
+  slides.forEach(function (slide) {
+    slide.style.transform = `translateX(-${counter * 100}%)`;
+  });
+}
+
 // Animation GSAP
 gsap.registerPlugin(CSSRulePlugin);
 const tl = gsap.timeline();
@@ -179,36 +212,3 @@ tlrev
     { duration: 0.5, opacity: 0, x: -100 },
     "-=.5"
   );
-
-//slide reviews
-
-const slides = document.querySelectorAll(".slide");
-const nextbutton = document.querySelector(".nextbutton");
-const prevbutton = document.querySelector(".prevbutton");
-
-slides.forEach(function (slide, index) {
-  slide.style.left = `${index * 100}%`;
-});
-
-var counter = 0;
-nextbutton.addEventListener("click", function () {
-  counter++;
-  carousel();
-});
-
-prevbutton.addEventListener("click", function () {
-  counter--;
-  carousel();
-});
-
-function carousel() {
-  if (counter === slides.length) {
-    counter = 0;
-  }
-  if (counter < 0) {
-    counter = slides.length - 1;
-  }
-  slides.forEach(function (slide) {
-    slide.style.transform = `translateX(-${counter * 100}%)`;
-  });
-}

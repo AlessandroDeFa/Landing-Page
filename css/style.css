@@ -652,6 +652,7 @@ body {
   justify-content: center;
   align-items: center;
   transition: all 400ms ease-in-out;
+  -webkit-transition: all 400ms ease-in-out;
 }
 
 .slide div:not(:last-child) {
@@ -871,6 +872,8 @@ label {
 
 .button-form {
   margin-top: 2.5rem;
+  background-color: white;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
